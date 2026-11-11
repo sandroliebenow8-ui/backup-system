@@ -17,3 +17,10 @@ ueber SSH vom File-Server.
 
     install -m 755 backup.sh /usr/local/bin/backup.sh
     echo "0 2 * * * root /usr/local/bin/backup.sh" > /etc/cron.d/backup
+
+## Restore
+
+Eine Datei aus der neuesten Sicherung zurueckspielen:
+
+    rsync -a -e "ssh -i /root/.ssh/backup_fs-liebenow" \
+        /BACKUP/fs-liebenow/version.0/DATA/datei.txt root@fs-liebenow:/DATA/
